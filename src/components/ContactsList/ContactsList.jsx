@@ -3,15 +3,15 @@ import React from 'react';
 const ContactsList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
-      {contacts.map(({ id, name, phone }) => {
+      {contacts.map(({ id, name, number }) => (
         <li key={id}>
           <p>{name}</p>
-          <p>{phone}</p>
+          <p>{number}</p>
           <button type="button" onClick={() => onDeleteContact(id)}>
             Delete
           </button>
-        </li>;
-      })}
+        </li>
+      ))}
     </ul>
   );
 };

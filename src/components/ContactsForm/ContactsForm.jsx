@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 
 class ContactsForm extends Component {
   state = {
-    filter: '',
     name: '',
     number: '',
   };
@@ -19,11 +18,14 @@ class ContactsForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    this.setState({ name: '', phone: '' });
   };
 
+  reset() {
+    this.setState({ name: '', number: '' });
+  }
+
   render() {
-    const { name, phone } = this.state;
+    const { name, number } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -42,8 +44,8 @@ class ContactsForm extends Component {
               Phone
               <input
                 type="text"
-                name="phone"
-                value={phone}
+                name="number"
+                value={number}
                 onChange={this.handleChange}
                 id={this.phoneInputId}
               />

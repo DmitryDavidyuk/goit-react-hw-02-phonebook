@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import Contacts from './ContactsForm';
 import ContactsList from './ContactsList';
+import ContactsForm from './ContactsForm';
 
 class App extends Component {
   state = {
@@ -15,11 +15,11 @@ class App extends Component {
     id: '',
   };
 
-  addContact = ({ name, phone }) => {
+  addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(5),
       name,
-      phone,
+      number,
     };
 
     this.setState(({ contacts }) => ({ contacts: [...contacts, contact] }));
@@ -28,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Contacts onSubmit={this.addContacts} />
+        <ContactsForm onSubmit={this.addContact} />
         <ContactsList contacts={this.state.contacts} />
       </div>
     );
